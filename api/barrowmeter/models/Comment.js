@@ -23,5 +23,5 @@ Comment.schema.virtual('content.full').get(function () {
 	return this.content.extended || this.content.brief;
 });
 
-Comment.defaultColumns = 'text,username,rating';
+Comment.defaultColumns = 'username,body,rating';
 Comment.register();
