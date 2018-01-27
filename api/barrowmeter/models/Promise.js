@@ -8,7 +8,8 @@ var Types = keystone.Field.Types;
 
 var Promise = new keystone.List('Promise', {
 	map: { name: 'title' },
-	autokey: { path: 'slug', from: 'title', unique: true },
+    autokey: { path: 'slug', from: 'title', unique: true },
+    track: true,    
 });
 
 Promise.add({
