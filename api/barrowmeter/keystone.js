@@ -57,7 +57,7 @@ keystone.set('routes', require('./routes'));
 keystone.set('nav', {
 	promises: ['promises', 'promise-categories'],
 	categories: 'promise-categories',
-	enquiries: 'enquiries',
+	scoreboard: 'comments',
 	users: 'users',
 });
 
