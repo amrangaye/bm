@@ -21,16 +21,17 @@ exports.list = function(req, res) {
  * Get PromiseCategory by ID
  */
 exports.get = function(req, res) {
-  PromiseCategory.model.findById(req.params.id).exec(function(err, item) {
+  PromiseCategory.model.findById(req.params.id).populate('promises').exec(function(err, item) {
 
     if (err) return res.json({ err: err });
     if (!item) return res.json('not found');
 
-    res.json({
-      PromiseCategory: item,
-      Items: item.promises
-    });
-
+    keystone.list('Promise').model.find({categories: item._id}).exec(function(err, promises) {
+        res.json({
+          PromiseCategory: item,
+          Promises: promises
+        });
+      })
   });
 }
 
