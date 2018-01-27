@@ -17,7 +17,7 @@ Promise.add({
 	state: { type: Types.Select, options: 'unfulfilled,fulfilled', default: 'unfulfilled', index: true },
 	fulfilledDate: { type: Types.Date, index: true, dependsOn: { state: 'fulfilled' } },
 	notes: {
-		brief: { type: Types.Html, wysiwyg: true, height: 150 },
+		type: Types.Html, wysiwyg: true, height: 150,
 	},
 	percentCompleted: { type: Number, default: 0 },
 	categories: { type: Types.Relationship, ref: 'PromiseCategory', many: true },
