@@ -24,6 +24,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			window.scrollTo(0, 1);
 		}
 
+		function showPromises(promiseId){
+			console.log("showing promises for "+promiseId);
+		}
+
 		function getCategories() {
 			categoriesUrl = 'http://localhost:3000/api/categories/'
 			var myHeaders = new Headers();
@@ -43,7 +47,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<h2 class="card-title">{{title}}</h2>
 						<h5 class="card-subtitle mb-2 text-muted">{{promisesFulfilled}} out of {{totalPromises}} Promises Fulfilled</h5>
 						<p class="card-text">{{description}}</p>
-						<a href="#" class="card-link">View Promises</a>
+						<a href="#" class="card-link" onclick="showPromises('{{promiseId}}'); return false">View Promises</a>
 					</div>
 				</div>
 			</div>`;
@@ -55,7 +59,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				categories.forEach(category => {
 					console.log(category);
 					var template = Handlebars.compile(source);
-					var context = {title: category.name, description: category.description, promisesFulfilled: category.fulfilledPromises, totalPromises: category.totalPromises};
+					var context = {title: category.name, promiseId: category.id, description: category.description, promisesFulfilled: category.fulfilledPromises, totalPromises: category.totalPromises};
 					var html    = template(context);
 
 					$("#promise_categories_row").append(html); 
