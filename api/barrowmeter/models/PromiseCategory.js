@@ -28,8 +28,4 @@ PromiseCategory.schema.virtual('postCount').get(function() {
 	getters: true
   });
 
-  PromiseCategory.schema.set('toJSON', {
-	getters: true
-  });
-
 PromiseCategory.register();

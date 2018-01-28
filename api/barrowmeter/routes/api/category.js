@@ -22,17 +22,26 @@ exports.list = function(req, res) {
     	// Load the counts for each category
 			async.each(categories, function (category, next) {
 
-				keystone.list('Promise').model.find({categories: category._id}).count().exec(function (err, count) {
+				keystone.list('Promise').model.find({categories: category._id}).exec(function (err, promises) {
           
-          category.postCount = count;
+          category.postCount = promises.length;
           var res_cat = {};
           res_cat.name = category.name;
-          res_cat.postCount = count;
-          res_cat.description = category.description; 
+
+          res_cat.fulfilledPromises = 0;
+          promises.forEach(promise => {
+            if(promise.state == "fulfilled")
+              res_cat.fulfilledPromises += 1; 
+          });
+          
+          res_cat.totalPromises = promises.length;
+          res_cat.description = category.description;
+          res_cat.id = category._id;
+
+          results['categories'].push(res_cat);
 
           console.log(res_cat); 
-          results['categories'].push(res_cat);
-          console.log(results["categories"]);
+          console.log(promises);
           
 					next(err);
 				});
@@ -40,7 +49,7 @@ exports.list = function(req, res) {
         res.json(
           results.categories
         );
-      });
+      }); // end of async
   });
 }
 

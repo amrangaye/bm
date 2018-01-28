@@ -15,6 +15,7 @@ var Promise = new keystone.List('Promise', {
 Promise.add({
 	title: { type: String, required: true },
 	state: { type: Types.Select, options: 'unfulfilled,fulfilled', default: 'unfulfilled', index: true },
+	link: { type: String },
 	fulfilledDate: { type: Types.Date, index: true, dependsOn: { state: 'fulfilled' } },
 	notes: {
 		type: Types.Html, wysiwyg: true, height: 150,
@@ -23,9 +24,6 @@ Promise.add({
 	categories: { type: Types.Relationship, ref: 'PromiseCategory', many: true },
 });
 
-Promise.schema.virtual('content.full').get(function () {
-	return this.content.extended || this.content.brief;
-});
 
 Promise.defaultColumns = 'title, state';
 Promise.register();
