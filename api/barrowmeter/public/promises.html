@@ -19,33 +19,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			setTimeout(hideURLbar, 0);
 		}, false);
 
-		
+
 		function hideURLbar() {
 			window.scrollTo(0, 1);
 		}
 
-		function getCategories(){
+		function getCategories() {
 			categoriesUrl = 'http://localhost:3000/api/categories/'
 			var myHeaders = new Headers();
 
-			var myInit = { method: 'GET',
-               headers: myHeaders,
-               mode: 'cors',
-               cache: 'default' };
+			var myInit = {
+				method: 'GET',
+				headers: myHeaders,
+				mode: 'cors',
+				cache: 'default'
+			};
 
-			fetch(categoriesUrl, myInit).then(function(response) {
-				console.log(response); 
+			fetch(categoriesUrl, myInit).then(function (response) {
+				return response.json();
+			}).then(function (categories) {
+				console.log(categories);
+				categories.forEach(resp => {
+					console.log(resp);
+				});
 			});
 		}
 
 		addEventListener("load", getCategories);
-		
+
 	</script>
 	<!-- //for-mobile-apps -->
 	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 	<link href='//fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
 	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
-	    rel='stylesheet' type='text/css'>
+	rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 	<!---strat-slider---->
@@ -169,6 +176,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				}
 			});
 		});
+
 	</script>
 	<!-- //FlexSlider -->
 	</div>
@@ -242,6 +250,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="js/jquery.wmuSlider.js"></script>
 	<script>
 		$('.example1').wmuSlider();
+
 	</script>
 	</div>
 	</div>
