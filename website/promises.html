@@ -19,9 +19,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			setTimeout(hideURLbar, 0);
 		}, false);
 
+		
 		function hideURLbar() {
 			window.scrollTo(0, 1);
 		}
+
+		function getCategories(){
+			categoriesUrl = 'http://localhost:3000/api/categories/'
+			var myHeaders = new Headers();
+
+			var myInit = { method: 'GET',
+               headers: myHeaders,
+               mode: 'cors',
+               cache: 'default' };
+
+			fetch(categoriesUrl, myInit).then(function(response) {
+				console.log(response); 
+			});
+		}
+
+		addEventListener("load", getCategories);
+		
 	</script>
 	<!-- //for-mobile-apps -->
 	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />

@@ -48,6 +48,9 @@ exports = module.exports = function (app) {
 	  app.get('/api/categories', routes.api.category.list);
 	  app.get('/api/categories/:id', routes.api.category.get);
 
+	//   static
+	keystone.redirect('/pub', '/index.html')
+
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
 
