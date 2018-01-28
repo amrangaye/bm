@@ -35,13 +35,35 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				cache: 'default'
 			};
 
+
+			var source = `			
+			<div class="col-lg-4">
+				<div class="card" style="width: 18rem;">
+					<div class="card-body">
+						<h2 class="card-title">{{title}}</h2>
+						<h5 class="card-subtitle mb-2 text-muted">{{promisesFulfilled}} out of {{totalPromises}} Promises Fulfilled</h5>
+						<p class="card-text">{{description}}</p>
+						<a href="#" class="card-link">View Promises</a>
+					</div>
+				</div>
+			</div>`;
+
 			fetch(categoriesUrl, myInit).then(function (response) {
 				return response.json();
 			}).then(function (categories) {
 				console.log(categories);
-				categories.forEach(resp => {
-					console.log(resp);
-				});
+				categories.forEach(category => {
+					console.log(category);
+					var template = Handlebars.compile(source);
+					var context = {title: category.name, description: category.description, promisesFulfilled: category.fulfilledPromises, totalPromises: category.totalPromises};
+					var html    = template(context);
+
+					$("#promise_categories_row").append(html); 
+					console.log(html);
+			});
+
+
+
 			});
 		}
 
@@ -57,6 +79,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
 	<!---strat-slider---->
 	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/js/handlebars.js"></script>
 	<!---//-slider---->
 </head>
 
@@ -259,39 +282,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- promise cards -->
 	<div class='container'>
 		<h1>Categories</h1>
-		<div class="row" style="padding: 3em">
-			<div class="col-lg-4">
-				<div class="card" style="width: 18rem;">
-					<div class="card-body">
-						<h2 class="card-title">Women</h2>
-						<h5 class="card-subtitle mb-2 text-muted">9 out of 10 Promises Fulfilled</h5>
-						<p class="card-text">Policies geared towards women and female empowerment.</p>
-						<a href="#" class="card-link">View Promises</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4">
-				<div class="col-lg-4">
-					<div class="card" style="width: 18rem;">
-						<div class="card-body">
-							<h2 class="card-title">Economy</h2>
-							<h5 class="card-subtitle mb-2 text-muted">2 out of 3 Promises Fulfilled</h5>
-							<p class="card-text">Policies geared towards economic growth and sustenance.</p>
-							<a href="#" class="card-link">View Promises</a>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-4">
-				<div class="card" style="width: 18rem;">
-					<div class="card-body">
-						<h2 class="card-title">Immigration</h2>
-						<h5 class="card-subtitle mb-2 text-muted">6 out of 7 Promises Fulfilled</h5>
-						<p class="card-text">Policies geared towards women and female empowerment.</p>
-						<a href="#" class="card-link">View Promises</a>
-					</div>
-				</div>
-			</div>
+		<!-- this will contain the categories added by getCategories -->
+		<div class="row" style="padding: 3em" id="promise_categories_row">
 		</div>
 	</div>
 
