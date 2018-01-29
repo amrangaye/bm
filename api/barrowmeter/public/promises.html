@@ -18,14 +18,49 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
 		}, false);
-
-
+		
 		function hideURLbar() {
 			window.scrollTo(0, 1);
 		}
 
 		function showPromises(categoryId) {
 			var promisesUrl = 'http://localhost:3000/api/categories/' + categoryId
+			Handlebars.registerHelper('isFulfilled', function(state, options) {
+				if(state === "fulfilled") {
+					return options.fn(this);
+				}
+				return options.inverse(this);
+			});
+
+			var source =
+				`			
+				<br/>
+			<h2>Promises under Category: {{category_name}}</h2><br/>
+			<a href="#" class="card-link" onclick="showAllCategories(); return false">[Back to All Categories]</a>
+			<br/><br/>
+
+			<p>
+			<b>Legend:</b>
+				<span class="glyphicon glyphicon-star" aria-hidden="true" style="color:green"></span> Complete
+				<span class="glyphicon glyphicon-star-empty" aria-hidden="true" style="color:red"></span> Incomplete
+			</p>
+			<br/><br/>
+
+			{{#each promises}}
+				<p>
+				
+				{{#isFulfilled this.state}}
+					<span class="glyphicon glyphicon-star" aria-hidden="true" style="color:green"></span>
+				{{else}}
+					<span class="glyphicon glyphicon-star-empty" aria-hidden="true" style="color:red"></span>
+				{{/isFulfilled}}	
+
+				{{this.notes}}
+
+				</p><br/><br/>
+			{{/each}}
+`;
+
 			console.log("showing promises for " + categoryId);
 
 			var myHeaders = new Headers();
@@ -41,7 +76,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				return response.json();
 			}).then(function (json) {
 				console.log(json.Promises);
+				var promises = json.Promises; 
 
+				// populate promises 
+				var template = Handlebars.compile(source);
+				var context = {
+					category_name: json.PromiseCategory.name,
+					promises: promises 
+				};
+				var html = template(context);
+
+
+				$("#promises").empty();
+				$("#promises").append(html);
+				console.log(html);
+
+				//fade promises in and categories out of screen
 				$("#promise_categories_row").fadeOut();
 				$("#promises").fadeIn();
 			});
@@ -321,14 +371,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 
 		<div id="promises" style="display: none">
-			<br/>
-			<h2>Promises under Category: Women</h2><br/>
-			<a href="#" class="card-link" onclick="showAllCategories(); return false">[Back to All Categories]</a>
-			<br/><br/>
-			<p><span class="glyphicon glyphicon-star" aria-hidden="true" style="color:green"></span>
-				The transitional government will introduce financial discipline both in terms of fiscal policy and public spending. It will give emphasis to revenue generation while encouraging expenditure based on means so as to reduce dependence on debt to meet budgetary requirements.</p><br/><br/>
-			<p><span class="glyphicon glyphicon-star-empty" aria-hidden="true" style="color:red"></span>
-				It will strive to increase the income of low earners such as pensioners and those at the lower grades.</p><br/><br/>
 		</div>
 	</div>
 

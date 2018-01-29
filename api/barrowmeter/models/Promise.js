@@ -18,7 +18,7 @@ Promise.add({
 	link: { type: String },
 	fulfilledDate: { type: Types.Date, index: true, dependsOn: { state: 'fulfilled' } },
 	notes: {
-		type: Types.Html, wysiwyg: true, height: 150,
+		type: String, height: 150,
 	},
 	percentCompleted: { type: Number, default: 0 },
 	categories: { type: Types.Relationship, ref: 'PromiseCategory', many: true },
