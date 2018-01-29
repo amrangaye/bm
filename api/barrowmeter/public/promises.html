@@ -24,12 +24,36 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			window.scrollTo(0, 1);
 		}
 
-		function showPromises(promiseId){
-			console.log("showing promises for "+promiseId);
+		function showPromises(categoryId) {
+			var promisesUrl = 'http://localhost:3000/api/categories/' + categoryId
+			console.log("showing promises for " + categoryId);
+
+			var myHeaders = new Headers();
+
+			var myInit = {
+				method: 'GET',
+				headers: myHeaders,
+				mode: 'cors',
+				cache: 'default'
+			};
+
+			fetch(promisesUrl, myInit).then(function (response) {
+				return response.json();
+			}).then(function (json) {
+				console.log(json.Promises);
+
+				$("#promise_categories_row").fadeOut();
+				$("#promises").fadeIn();
+			});
+		}
+
+		function showAllCategories(){
+			$("#promise_categories_row").fadeIn();		
+			$("#promises").fadeOut();
 		}
 
 		function getCategories() {
-			categoriesUrl = 'http://localhost:3000/api/categories/'
+			var categoriesUrl = 'http://localhost:3000/api/categories/'
 			var myHeaders = new Headers();
 
 			var myInit = {
@@ -40,7 +64,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			};
 
 
-			var source = `			
+			var source =
+				`			
 			<div class="col-lg-4">
 				<div class="card" style="width: 18rem;">
 					<div class="card-body">
@@ -59,12 +84,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				categories.forEach(category => {
 					console.log(category);
 					var template = Handlebars.compile(source);
-					var context = {title: category.name, promiseId: category.id, description: category.description, promisesFulfilled: category.fulfilledPromises, totalPromises: category.totalPromises};
-					var html    = template(context);
+					var context = {
+						title: category.name,
+						promiseId: category.id,
+						description: category.description,
+						promisesFulfilled: category.fulfilledPromises,
+						totalPromises: category.totalPromises
+					};
+					var html = template(context);
 
-					$("#promise_categories_row").append(html); 
+					$("#promise_categories_row").append(html);
 					console.log(html);
-			});
+				});
 
 
 
@@ -285,9 +316,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<!-- promise cards -->
 	<div class='container'>
-		<h1>Categories</h1>
 		<!-- this will contain the categories added by getCategories -->
 		<div class="row" style="padding: 3em" id="promise_categories_row">
+		</div>
+
+		<div id="promises" style="display: none">
+			<br/>
+			<h2>Promises under Category: Women</h2><br/>
+			<a href="#" class="card-link" onclick="showAllCategories(); return false">[Back to All Categories]</a>
+			<br/><br/>
+			<p><span class="glyphicon glyphicon-star" aria-hidden="true" style="color:green"></span>
+				The transitional government will introduce financial discipline both in terms of fiscal policy and public spending. It will give emphasis to revenue generation while encouraging expenditure based on means so as to reduce dependence on debt to meet budgetary requirements.</p><br/><br/>
+			<p><span class="glyphicon glyphicon-star-empty" aria-hidden="true" style="color:red"></span>
+				It will strive to increase the income of low earners such as pensioners and those at the lower grades.</p><br/><br/>
 		</div>
 	</div>
 
