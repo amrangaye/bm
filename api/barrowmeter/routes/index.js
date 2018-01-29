@@ -48,6 +48,9 @@ exports = module.exports = function (app) {
 	  app.get('/api/categories', routes.api.category.list);
 	  app.get('/api/categories/:id', routes.api.category.get);
 
+	  app.get('/api/comments', routes.api.comment.list);
+	  app.get('/api/comments/:id', routes.api.comment.get);
+
 	//   static
 	keystone.redirect('/pub', '/index.html')
 
