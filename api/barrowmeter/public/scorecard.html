@@ -14,6 +14,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Election Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<link href="/css/star-rating.css" media="all" rel="stylesheet" type="text/css" />
+	
+	<!-- //for-mobile-apps -->
+	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+	<link href='//fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
+	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
+	rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+	<!---strat-slider---->
+	<script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="/js/handlebars.js"></script>
+	<!---//-slider---->
+	<!-- star rating -->
+	<script src="/js/star-rating.js" type="text/javascript"></script>
+
 	<script type="application/x-javascript">
 		addEventListener("load", function () {
 			setTimeout(hideURLbar, 0);
@@ -34,6 +50,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				cache: 'default'
 			};
 
+			Handlebars.registerHelper('getStars', function(cur_rating, options) {
+				
+				var pos_star = '<span class="glyphicon glyphicon-star" aria-hidden="true" style="color:green"></span>';
+				
+				var neg_star = '<span class="glyphicon glyphicon-star-empty" aria-hidden="true" style="color:green"></span>';
+
+				var rating_tmpl = pos_star.repeat(cur_rating) + neg_star.repeat(5-cur_rating);
+                             
+				return rating_tmpl; 
+			});
+
 			var source = `
 			<!-- each of these is a single rating -->
 			{{#each comments}}
@@ -48,11 +75,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							{{this.body}}
                         </div>
                         <div class="panel-footer">
-                                <span class="glyphicon glyphicon-star" aria-hidden="true" style="color:green"></span>
-                                <span class="glyphicon glyphicon-star" aria-hidden="true" style="color:green"></span>
-                                <span class="glyphicon glyphicon-star" aria-hidden="true" style="color:green"></span>
-                                <span class="glyphicon glyphicon-star" aria-hidden="true" style="color:green"></span>
-                                <span class="glyphicon glyphicon-star-empty" aria-hidden="true" style="color:red"></span> 
+						{{{getStars this.rating}}}
+							<input id="{{this._id}}" type="text" class="rating rating-loading" value="2.5" data-size="sm" title="">
                         </div>
                 </div>
 				{{/each}}`;
@@ -76,17 +100,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         addEventListener("load", getRatings);
 
 	</script>
-	<!-- //for-mobile-apps -->
-	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
-	<link href='//fonts.googleapis.com/css?family=Raleway:400,100,200,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
-	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic'
-	rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
-	<!---strat-slider---->
-	<script type="text/javascript" src="/js/jquery-1.11.1.min.js"></script>
-	<script type="text/javascript" src="/js/handlebars.js"></script>
-	<!---//-slider---->
 </head>
 
 <body>
@@ -286,11 +299,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<div class='container'>
         <br/>
-            <h1>Citizen Ratings</h1>
-            <br/><br/>
-
+			<h1>Citizen Ratings</h1>
+		
+			<br/><br/>
+			
             <div id="ratings">
-                
+				
             </div>
 	</div>
 
