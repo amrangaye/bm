@@ -22,138 +22,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		function hideURLbar() {
 			window.scrollTo(0, 1);
 		}
-
-		function showPromises(categoryId) {
-			var promisesUrl = 'http://localhost:3000/api/categories/' + categoryId
-			Handlebars.registerHelper('isFulfilled', function(state, options) {
-				if(state === "fulfilled") {
-					return options.fn(this);
-				}
-				return options.inverse(this);
-			});
-
-			var source =
-				`			
-				<br/>
-			<h2>Promises under Category: {{category_name}}</h2><br/>
-			<a href="#" class="card-link" onclick="showAllCategories(); return false">[Back to All Categories]</a>
-			<br/><br/>
-
-			<p>
-			<b>Legend:</b>
-				<span class="glyphicon glyphicon-star" aria-hidden="true" style="color:green"></span> Complete
-				<span class="glyphicon glyphicon-star-empty" aria-hidden="true" style="color:red"></span> Incomplete
-			</p>
-			<br/><br/>
-
-			{{#each promises}}
-				<p>
-				
-				{{#isFulfilled this.state}}
-					<span class="glyphicon glyphicon-star" aria-hidden="true" style="color:green"></span>
-				{{else}}
-					<span class="glyphicon glyphicon-star-empty" aria-hidden="true" style="color:red"></span>
-				{{/isFulfilled}}	
-
-				{{this.notes}}
-
-				</p><br/><br/>
-			{{/each}}
-`;
-
-			console.log("showing promises for " + categoryId);
-
-			var myHeaders = new Headers();
-
-			var myInit = {
-				method: 'GET',
-				headers: myHeaders,
-				mode: 'cors',
-				cache: 'default'
-			};
-
-			fetch(promisesUrl, myInit).then(function (response) {
-				return response.json();
-			}).then(function (json) {
-				console.log(json.Promises);
-				var promises = json.Promises; 
-
-				// populate promises 
-				var template = Handlebars.compile(source);
-				var context = {
-					category_name: json.PromiseCategory.name,
-					promises: promises 
-				};
-				var html = template(context);
-
-
-				$("#promises").empty();
-				$("#promises").append(html);
-				console.log(html);
-
-				//fade promises in and categories out of screen
-				$("#promise_categories_row").fadeOut();
-				$("#promises").fadeIn();
-			});
-		}
-
-		function showAllCategories(){
-			$("#promise_categories_row").fadeIn();		
-			$("#promises").fadeOut();
-		}
-
-		function getCategories() {
-			var categoriesUrl = 'http://localhost:3000/api/categories/'
-			var myHeaders = new Headers();
-
-			var myInit = {
-				method: 'GET',
-				headers: myHeaders,
-				mode: 'cors',
-				cache: 'default'
-			};
-
-
-			var source =
-				`			
-			<div class="col-lg-4">
-				<div class="card" style="width: 18rem;">
-					<div class="card-body">
-						<h2 class="card-title">{{title}}</h2>
-						<h5 class="card-subtitle mb-2 text-muted">{{promisesFulfilled}} out of {{totalPromises}} Promises Fulfilled</h5>
-						<p class="card-text">{{description}}</p>
-						<a href="#" class="card-link" onclick="showPromises('{{promiseId}}'); return false">View Promises</a>
-					</div>
-				</div>
-			</div>`;
-
-			fetch(categoriesUrl, myInit).then(function (response) {
-				return response.json();
-			}).then(function (categories) {
-				console.log(categories);
-				categories.forEach(category => {
-					console.log(category);
-					var template = Handlebars.compile(source);
-					var context = {
-						title: category.name,
-						promiseId: category.id,
-						description: category.description,
-						promisesFulfilled: category.fulfilledPromises,
-						totalPromises: category.totalPromises
-					};
-					var html = template(context);
-
-					$("#promise_categories_row").append(html);
-					console.log(html);
-				});
-
-
-
-			});
-		}
-
-		addEventListener("load", getCategories);
-
 	</script>
 	<!-- //for-mobile-apps -->
 	<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
@@ -295,14 +163,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="col-md-4 banner-bottom1-left banner-bottom1-left1">
 				<div class="banner-bottom1-lft">
 					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-					<h3>Track Promises</h3>
-
+					<a href="promises.html"><h3>Track Promises</h3></a>
 				</div>
 			</div>
 			<div class="col-md-4 banner-bottom1-left">
 				<div class="banner-bottom1-lft">
 					<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-					<a href="scorecard.html"><h3>Ctizen's Scorecard</h3></a>
+					<h3>Ctizen's Scorecard</h3>
 
 				</div>
 			</div>

@@ -19,9 +19,5 @@ Comment.add({
 	published: { type: Boolean, default: false },
 });
 
-Comment.schema.virtual('content.full').get(function () {
-	return this.content.extended || this.content.brief;
-});
-
 Comment.defaultColumns = 'username,body,rating';
 Comment.register();
