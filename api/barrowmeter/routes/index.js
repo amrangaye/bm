@@ -41,15 +41,19 @@ exports = module.exports = function (app) {
 	app.get('/gallery', routes.views.gallery);
 	app.all('/contact', routes.views.contact);
 
-	  // API
+	  // Promises API
 	  app.get('/api/promises', routes.api.promise.list);
 	  app.get('/api/promises/:id', routes.api.promise.get);
 
 	  app.get('/api/categories', routes.api.category.list);
 	  app.get('/api/categories/:id', routes.api.category.get);
 
+
+	  //   Comments API
 	  app.get('/api/comments', routes.api.comment.list);
 	  app.get('/api/comments/:id', routes.api.comment.get);
+
+	  app.post('/api/comments', routes.api.comment.create);
 
 	//   static
 	keystone.redirect('/pub', '/index.html')

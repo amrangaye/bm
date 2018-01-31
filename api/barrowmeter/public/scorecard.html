@@ -76,7 +76,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="panel-footer">
 						{{{getStars this.rating}}}
-							<input id="{{this._id}}" type="text" class="rating rating-loading" value="2.5" data-size="sm" title="">
                         </div>
                 </div>
 				{{/each}}`;
@@ -301,8 +300,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <br/>
 			<h1>Citizen Ratings</h1>
 		
+			<p><input id="rating" type="text" class="rating rating-loading"  data-size="sm" step="1" title="" value="3.5" disabled=true>
+			</p>
 			<br/><br/>
-			
+			<div class="panel panel-success">
+					<div class="panel-heading">
+					  <h3 class="panel-title" style="margin-left: 1em">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>  
+						Rate Your Government</h3>
+					</div>
+					<div class="panel-body" id="add_rating_form">
+							<form action="/action_page.php">
+								<div class="form-group">
+								  <label for="email">Username:</label>
+								  <input type="email" class="form-control" id="username">
+								</div>
+								<div class="form-group">
+								  <label for="body">Review (optional):</label>
+								  <textarea class="form-control" rows="5" id="body"></textarea>
+								</div>
+
+								<input id="rating" type="text" class="rating rating-loading"  data-size="sm" step="1" title="">
+<br/>
+								<button type="submit" class="btn btn-default">Submit</button>
+							  </form>
+					</div>
+				  </div>
             <div id="ratings">
 				
             </div>
