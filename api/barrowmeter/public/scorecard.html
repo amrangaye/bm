@@ -96,7 +96,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			});
         }
 
+		function setupRatingsForm(){
+			$('form').submit(function(event) { 
+				console.log("Form submitted!");
+
+				var data = {
+					username: $('#username').val(),
+					body: $('#body').val(),
+					rating:	$('#rating').val()
+				}
+
+				console.log(data);
+				event.preventDefault();
+			}); 
+		}
+
         addEventListener("load", getRatings);
+        addEventListener("load", setupRatingsForm);
 
 	</script>
 </head>
