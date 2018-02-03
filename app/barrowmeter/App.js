@@ -7,9 +7,15 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-  <Image
-  source={require('./assets/barrowmeter_logo.png')}
-  style={styles.logo}/>
+       <View style={styles.logo_container}>
+        <Image
+        source={require('./assets/barrowmeter_logo.png')}
+        style={styles.logo}/>
+       </View>
+
+       <View style={styles.tabs_container}>
+        <Text>Tabs Go Here</Text>
+       </View>
       </View>
     );
   }
@@ -19,14 +25,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
+    alignItems: 'stretch',
     justifyContent: 'center',
   },
   logo: {
     width: 200,
-    height: 200
+    height: 200,
   }, 
-  button: {
-    backgroundColor: "#9E9E9E"
+  logo_container: {
+    flex: 1,
+    // backgroundColor: 'blue',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  tabs_container: {
+    backgroundColor: 'red',
+    flex: 1
   }
 });
