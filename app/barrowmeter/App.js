@@ -29,11 +29,15 @@ export default class App extends React.Component {
         style={styles.logo}/>
        </View>
 
-       <View style={styles.tabs_container}>
-        <View style={styles.tab_row}>
-          <MenuButton /> 
-        </View>
-       </View>
+      <Grid>
+        <Row style={styles.tab_row}>
+          <Col><MenuButton /></Col>
+          <Col style={{backgroundColor: 'red'}}></Col>
+          <Col></Col>
+        </Row>
+        <Row></Row>
+        <Row style={styles.tab_row}></Row>
+      </Grid>
       </View>
     );
   }
@@ -61,11 +65,11 @@ const styles = StyleSheet.create({
     flex: 1
   },
   tab_row: {
-    flex: 1,
-    flexDirection: 'row',
+    // flex: 1,
+    // flexDirection: 'row',
     backgroundColor: 'green',
-    justifyContent: 'center',
-    alignItems: 'center'
+    // justifyContent: 'center',
+    // alignItems: 'center'
   },
   menu_button_container: {
     flex: 1,
