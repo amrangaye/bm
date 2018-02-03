@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 // import { Container, Header, Content, Card, CardItem, Body, Text } from 'native-base';
 import { Button, Tile, Card, Icon } from 'react-native-elements';
 import { Col, Row, Grid } from "react-native-easy-grid";
@@ -7,14 +7,14 @@ import { Col, Row, Grid } from "react-native-easy-grid";
 export class MenuButton extends React.Component {
   render () {
     return (
-    <View style={styles.menu_button_container}>
+    <TouchableOpacity style={styles.menu_button_container} onPress={() => console.log('1st')}>
     <Card>
         <Icon
-        name='info'
+        name={this.props.icon}
         color='#00aced' />
-      <Text>About Us</Text>
+      <Text >{this.props.title}</Text>
       </Card>
-      </View>
+      </TouchableOpacity>
     ); 
   }
 }
@@ -31,12 +31,15 @@ export default class App extends React.Component {
 
       <Grid>
         <Row style={styles.tab_row}>
-          <Col><MenuButton /></Col>
-          <Col style={{backgroundColor: 'red'}}></Col>
-          <Col></Col>
+          <Col><MenuButton title='About Us' icon='info' /></Col>
+          <Col><MenuButton title='Location' icon='location-on' /></Col>
+          <Col><MenuButton title='Events' icon='event-note' /></Col>
         </Row>
-        <Row></Row>
-        <Row style={styles.tab_row}></Row>
+        <Row>
+          <Col><MenuButton title='Reviews' icon='rate-review' /></Col>
+          <Col><MenuButton title='Email' icon='email' /></Col>
+          <Col><MenuButton title='Social Media' icon='chat-bubble' /></Col>
+        </Row>
       </Grid>
       </View>
     );
@@ -75,7 +78,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'blue',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
       // flexDirection: 'column',
       // alignItems: 'stretch',
     // flexGrow: 1
