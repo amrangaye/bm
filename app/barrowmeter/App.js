@@ -1,7 +1,23 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
 // import { Container, Header, Content, Card, CardItem, Body, Text } from 'native-base';
-import { Button } from 'react-native-elements';
+import { Button, Tile, Card, Icon } from 'react-native-elements';
+import { Col, Row, Grid } from "react-native-easy-grid";
+
+export class MenuButton extends React.Component {
+  render () {
+    return (
+    <View style={styles.menu_button_container}>
+    <Card>
+        <Icon
+        name='info'
+        color='#00aced' />
+      <Text>About Us</Text>
+      </Card>
+      </View>
+    ); 
+  }
+}
 
 export default class App extends React.Component {
   render() {
@@ -14,7 +30,9 @@ export default class App extends React.Component {
        </View>
 
        <View style={styles.tabs_container}>
-        <Text>Tabs Go Here</Text>
+        <View style={styles.tab_row}>
+          <MenuButton /> 
+        </View>
        </View>
       </View>
     );
@@ -41,5 +59,25 @@ const styles = StyleSheet.create({
   tabs_container: {
     backgroundColor: 'red',
     flex: 1
+  },
+  tab_row: {
+    flex: 1,
+    flexDirection: 'row',
+    backgroundColor: 'green',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  menu_button_container: {
+    flex: 1,
+    backgroundColor: 'blue',
+    justifyContent: 'center',
+    alignItems: 'center'
+      // flexDirection: 'column',
+      // alignItems: 'stretch',
+    // flexGrow: 1
+  },
+  menu_button: {
+    margin: 0,
+    padding: 0
   }
 });
