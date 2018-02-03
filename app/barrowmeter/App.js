@@ -28,7 +28,6 @@ export default class App extends React.Component {
         source={require('./assets/barrowmeter_logo.png')}
         style={styles.logo}/>
        </View>
-
       <Grid>
         <Row style={styles.tab_row}>
           <Col><MenuButton title='About Us' icon='info' /></Col>
