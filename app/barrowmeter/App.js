@@ -8,11 +8,11 @@ export class MenuButton extends React.Component {
   render () {
     return (
     <TouchableOpacity style={styles.menu_button_container} onPress={() => console.log('1st')}>
-    <Card>
+    <Card containerStyle={{backgroundColor: 'green'}} style={styles.menu_button}>
         <Icon
         name={this.props.icon}
         color='#00aced' />
-      <Text >{this.props.title}</Text>
+      <Text style={styles.menu_text}>{this.props.title}</Text>
       </Card>
       </TouchableOpacity>
     ); 
@@ -69,21 +69,29 @@ const styles = StyleSheet.create({
   tab_row: {
     // flex: 1,
     // flexDirection: 'row',
-    backgroundColor: 'green',
+    // backgroundColor: 'green',
     // justifyContent: 'center',
     // alignItems: 'center'
   },
   menu_button_container: {
     flex: 1,
-    backgroundColor: 'blue',
     justifyContent: 'center',
     alignItems: 'center',
+    borderWidth: 1,
+    borderRadius: 10,
+    margin: 5
       // flexDirection: 'column',
       // alignItems: 'stretch',
     // flexGrow: 1
   },
+  menu_text: {
+    fontSize: 12, 
+  },
   menu_button: {
     margin: 0,
-    padding: 0
+    padding: 0,
+    flexGrow: 1,
+    borderColor: 'white',
+    borderRadius: 50
   }
 });
