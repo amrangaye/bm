@@ -8,12 +8,10 @@ export class MenuButton extends React.Component {
   render () {
     return (
     <TouchableOpacity style={styles.menu_button_container} onPress={() => console.log('1st')}>
-    <Card containerStyle={{backgroundColor: 'green'}} style={styles.menu_button}>
         <Icon
         name={this.props.icon}
         color='#00aced' />
       <Text style={styles.menu_text}>{this.props.title}</Text>
-      </Card>
       </TouchableOpacity>
     ); 
   }
