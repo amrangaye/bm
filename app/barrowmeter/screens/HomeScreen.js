@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { Button, Tile, Card, Icon } from 'react-native-elements';
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { StackNavigator } from 'react-navigation';
+import Communications from 'react-native-communications';
 
 export class MenuButton extends React.Component {
   render () {
@@ -35,8 +36,14 @@ export default class HomeScreen extends React.Component {
         </Row>
         <Row>
           <Col><MenuButton title='Reviews' icon='rate-review' navigation={this.props.navigation} /></Col>
-          <Col><MenuButton title='Email' icon='email' navigation={this.props.navigation} /></Col>
           <Col><MenuButton title='Social Media' icon='chat-bubble' navigation={this.props.navigation} /></Col>
+         
+          <TouchableOpacity style={styles.menu_button_container} onPress={() => Communications.email(['info@barrowmeter.gm'],null,null,'Subject:','')}>
+                <Icon
+                name='email'
+                color='#00aced' />
+                <Text style={styles.menu_text}>Email Us</Text>
+          </TouchableOpacity>
         </Row>
       </Grid>
       </View>
