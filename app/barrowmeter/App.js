@@ -7,6 +7,7 @@ import { StackNavigator } from 'react-navigation';
 
 import AboutUsScreen from './screens/AboutUsScreen'; 
 import HomeScreen from './screens/HomeScreen'; 
+import SocialMediaScreen from './screens/SocialMediaScreen'; 
 
 class App extends React.Component {
   componentDidMount() {
@@ -26,6 +27,9 @@ export default StackNavigator({
   },
   About: {
     screen: AboutUsScreen,
+  },
+  Social: {
+    screen: SocialMediaScreen,
   }
 },
 {
