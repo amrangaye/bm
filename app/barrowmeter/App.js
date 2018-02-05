@@ -9,6 +9,12 @@ import AboutUsScreen from './screens/AboutUsScreen';
 import HomeScreen from './screens/HomeScreen'; 
 
 class App extends React.Component {
+  componentDidMount() {
+    Font.loadAsync({
+      'encode-sans': require('./assets/fonts/EncodeSans-Regular.ttf'),
+    });
+  }
+
   render() {
     return <RootStack />;
   }
@@ -23,7 +29,9 @@ export default StackNavigator({
   }
 },
 {
-  initialRouteName: 'Home',
+  // temp to test out routes - change back to Home
+  // initialRouteName: 'Home', 
+  initialRouteName: 'Home', 
 }
 );
 
