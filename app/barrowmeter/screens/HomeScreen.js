@@ -5,23 +5,44 @@ import { Button, Tile, Card, Icon } from 'react-native-elements';
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { StackNavigator } from 'react-navigation';
 
-import AboutUsScreen from './screens/AboutUsScreen'; 
-import HomeScreen from './screens/HomeScreen'; 
-
-class App extends React.Component {
-  render() {
-    return <RootStack />;
+export class MenuButton extends React.Component {
+  render () {
+    return (
+    <TouchableOpacity style={styles.menu_button_container} onPress={() => this.props.navigation.navigate('About')}>
+        <Icon
+        name={this.props.icon}
+        color='#00aced' />
+      <Text style={styles.menu_text}>{this.props.title}</Text>
+      </TouchableOpacity>
+    ); 
   }
 }
 
-export default StackNavigator({
-  Home: {
-    screen: HomeScreen,
-  },
-  About: {
-    screen: AboutUsScreen,
+export default class HomeScreen extends React.Component {
+  render() {
+    return (
+      <View style={styles.container}>
+       <View style={styles.logo_container}>
+        <Image
+        source={require('../assets/barrowmeter_logo.png')}
+        style={styles.logo}/>
+       </View>
+      <Grid>
+        <Row style={styles.tab_row}>
+          <Col><MenuButton title='About Us' icon='info' /></Col>
+          <Col><MenuButton title='Location' icon='location-on' /></Col>
+          <Col><MenuButton title='Events' icon='event-note' /></Col>
+        </Row>
+        <Row>
+          <Col><MenuButton title='Reviews' icon='rate-review' /></Col>
+          <Col><MenuButton title='Email' icon='email' /></Col>
+          <Col><MenuButton title='Social Media' icon='chat-bubble' /></Col>
+        </Row>
+      </Grid>
+      </View>
+    );
   }
-});
+}
 
 const styles = StyleSheet.create({
   container: {
