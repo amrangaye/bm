@@ -21,7 +21,11 @@ export default StackNavigator({
   About: {
     screen: AboutUsScreen,
   }
-});
+},
+{
+  initialRouteName: 'Home',
+}
+);
 
 const styles = StyleSheet.create({
   container: {

@@ -26,17 +26,17 @@ export default class HomeScreen extends React.Component {
         <Image
         source={require('../assets/barrowmeter_logo.png')}
         style={styles.logo}/>
-       </View>
+       </View> 
       <Grid>
         <Row style={styles.tab_row}>
-          <Col><MenuButton title='About Us' icon='info' /></Col>
-          <Col><MenuButton title='Location' icon='location-on' /></Col>
-          <Col><MenuButton title='Events' icon='event-note' /></Col>
+          <Col><MenuButton title='About Us' icon='info' navigation={this.props.navigation} /></Col>
+          <Col><MenuButton title='Location' icon='location-on' navigation={this.props.navigation} /></Col>
+          <Col><MenuButton title='Events' icon='event-note' navigation={this.props.navigation} /></Col>
         </Row>
         <Row>
-          <Col><MenuButton title='Reviews' icon='rate-review' /></Col>
-          <Col><MenuButton title='Email' icon='email' /></Col>
-          <Col><MenuButton title='Social Media' icon='chat-bubble' /></Col>
+          <Col><MenuButton title='Reviews' icon='rate-review' navigation={this.props.navigation} /></Col>
+          <Col><MenuButton title='Email' icon='email' navigation={this.props.navigation} /></Col>
+          <Col><MenuButton title='Social Media' icon='chat-bubble' navigation={this.props.navigation} /></Col>
         </Row>
       </Grid>
       </View>
