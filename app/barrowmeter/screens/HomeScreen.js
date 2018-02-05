@@ -8,7 +8,7 @@ import { StackNavigator } from 'react-navigation';
 export class MenuButton extends React.Component {
   render () {
     return (
-    <TouchableOpacity style={styles.menu_button_container} onPress={() => this.props.navigation.navigate('About')}>
+    <TouchableOpacity style={styles.menu_button_container} onPress={() => this.props.navigation.navigate(this.props.menu_page)}>
         <Icon
         name={this.props.icon}
         color='#00aced' />
@@ -29,7 +29,7 @@ export default class HomeScreen extends React.Component {
        </View> 
       <Grid>
         <Row style={styles.tab_row}>
-          <Col><MenuButton title='About Us' icon='info' navigation={this.props.navigation} /></Col>
+          <Col><MenuButton title='About Us' icon='info' navigation={this.props.navigation} menu_page='About' /></Col>
           <Col><MenuButton title='Location' icon='location-on' navigation={this.props.navigation} /></Col>
           <Col><MenuButton title='Events' icon='event-note' navigation={this.props.navigation} /></Col>
         </Row>
