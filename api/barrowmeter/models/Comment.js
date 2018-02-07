@@ -19,5 +19,5 @@ Comment.add({
 	published: { type: Boolean, default: false },
 });
 
-Comment.defaultColumns = 'username,body,rating';
+Comment.defaultColumns = 'username,body,rating,published';
 Comment.register();
