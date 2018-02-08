@@ -102,7 +102,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				// update pie chart
 				var fulfilled = 0;
 				promises.forEach(p => {
-					fulfilled += (p.status == "unfulfilled") ? 0 : 1
+					fulfilled += (p.state == "fulfilled") ? 1 : 0
 				});
 				drawChart(fulfilled, promises.length-fulfilled);
 			});
@@ -160,7 +160,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					console.log(html);
 
 					chart_fulfilled_promises += category.fulfilledPromises;
-					
+
 					chart_unfulfilled_promises += (category.totalPromises-category.fulfilledPromises);
 				});
 			});
