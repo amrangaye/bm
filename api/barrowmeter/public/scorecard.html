@@ -93,6 +93,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				};
 				var html = template(context);
 				$("#ratings").append(html);
+
+				// calculate average / overall rating 
+				var avg_rating = 0; 
+				var num_ratings = json.Comment.length;
+
+				json.Comment.forEach(function(comment) {
+					avg_rating += comment.rating;
+				});
+
+				avg_rating /= num_ratings;
+				console.log(avg_rating); 
+				$("#rating").rating('update', avg_rating);	
 			});
         }
 
@@ -338,7 +350,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<div class='container'>
         <br/>
-			<h1>Citizen Ratings</h1>
+			<h1>Average Rating</h1>
 		
 			<p><input id="rating" type="text" class="rating rating-loading"  data-size="sm" step="1" title=""  disabled=true>
 			</p>
@@ -361,7 +373,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								  <textarea class="form-control" rows="5" id="body"></textarea>
 								</div>
 
-								<input id="user_rating" type="text" class="rating rating-loading"  data-size="sm" step="1" title="">
+								<input id="user_rating" type="number" class="rating rating-loading" data-size="sm" step="1" title="">
 <br/>
 								<button type="submit" class="btn btn-default">Submit</button>
 							  </form>
