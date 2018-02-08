@@ -16,7 +16,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="text/javascript" src="js/loader.js"></script>
 	<script type="application/x-javascript">
-		var chart_total_promises = 0;
+		var chart_unfulfilled_promises = 0;
 		var chart_fulfilled_promises = 0;
 
 		addEventListener("load", function () {
@@ -93,17 +93,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 				$("#promises").empty();
 				$("#promises").append(html);
-				console.log(html);
+				// console.log(html);
 
 				//fade promises in and categories out of screen
 				$("#promise_categories_row").fadeOut();
 				$("#promises").fadeIn();
+
+				// update pie chart
+				var fulfilled = 0;
+				promises.forEach(p => {
+					fulfilled += (p.status == "unfulfilled") ? 0 : 1
+				});
+				drawChart(fulfilled, promises.length-fulfilled);
 			});
 		}
 
 		function showAllCategories(){
 			$("#promise_categories_row").fadeIn();		
 			$("#promises").fadeOut();
+			// redraw pie chart
+			drawChart(chart_fulfilled_promises, chart_unfulfilled_promises);
 		}
 
 		function getCategories() {
@@ -151,23 +160,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					console.log(html);
 
 					chart_fulfilled_promises += category.fulfilledPromises;
-					chart_total_promises += category.totalPromises;
+					
+					chart_unfulfilled_promises += (category.totalPromises-category.fulfilledPromises);
 				});
 			});
 
-
 			google.charts.load('current', {'packages':['corechart']});
-			google.charts.setOnLoadCallback(drawChart);
+			google.charts.setOnLoadCallback(function() {drawChart(chart_fulfilled_promises, chart_unfulfilled_promises)});
 		}
 
 		addEventListener("load", getCategories);
   
-		function drawChart() {
-  
+		function drawChart(fulfilled_promises, incomplete_promises) {
 		  var data = google.visualization.arrayToDataTable([
 			['Promise State', 'Number'],
-			['Complete',     chart_fulfilled_promises],
-			['Incomplete',    chart_total_promises]
+			['Complete',     fulfilled_promises],
+			['Incomplete',    incomplete_promises]
 		  ]);
   
 		  var options = {
