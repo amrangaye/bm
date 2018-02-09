@@ -12,7 +12,7 @@ export default class ReviewsScreen extends React.Component {
       },
     };
 
-    state = {reviews: []}    
+    state = {reviews: [], avg_rating: 0}    
 
     getRatings(){
         var ratingsUrl = 'http://192.168.1.105:3000/api/comments/';
@@ -49,18 +49,35 @@ export default class ReviewsScreen extends React.Component {
         }).then( (json) => {
             console.log(json.Comment);
             this.setState({reviews: json.Comment});
+
+            var avg_rating = 0; 
+            this.state.reviews.forEach((rev) => {
+                avg_rating += rev.rating;
+            });
+
+            avg_rating /= this.state.reviews.length;
+            avg_rating = parseInt(avg_rating);
+            console.log("Average: "+avg_rating);
+            this.setState({avg_rating: avg_rating});
         });
     }
 
     render () {
       return (
         <Grid>
-          <Row size={30}>
-          <Image
-          source={require('../assets/banner.jpg')}
-            style={styles.banner}/>
+        <Row size={10}  style={styles.overall_rating}>
+           <Text  style={styles.overall_rating_title}>Average Satisfaction Level</Text> 
+        </Row>
+          <Row size={10} style={styles.overall_rating}>
+            {
+                Array(this.state.avg_rating).fill().map((i,idx) => {
+                    return (
+                        <Icon name='star' color='lightgreen' size={30} key={idx} />
+                    )
+                })
+            }
           </Row>
-          <Row size={70}>
+          <Row size={80}>
           <ScrollView>          
             {
                 this.state.reviews.map((rev, i) => {
@@ -88,7 +105,7 @@ class Review extends React.Component {
                 {
                     Array(this.props.rating).fill().map((i,idx) => {
                         return (
-                            <Icon name='star' color='lightgreen' key={idx} />
+                            <Icon name='star' color='lightgreen' size={12} key={idx} />
                         )
                     })
                 }
@@ -117,6 +134,14 @@ const styles = StyleSheet.create({
   stars: {
     alignSelf: 'flex-end',
   },
+  overall_rating: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  overall_rating_title: {
+    fontSize: 20,
+    fontWeight: 'bold'
+  }, 
   review: {
 
   }
