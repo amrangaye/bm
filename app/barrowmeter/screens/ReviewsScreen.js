@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { Font } from 'expo';
+import { Card, ListItem, Button } from 'react-native-elements'
 
 export default class ReviewsScreen extends React.Component {
     static navigationOptions = {
@@ -11,7 +12,7 @@ export default class ReviewsScreen extends React.Component {
       },
     };
 
-    state = {}    
+    state = {reviews: []}    
 
     getRatings(){
         var ratingsUrl = 'http://192.168.1.105:3000/api/comments/';
@@ -47,7 +48,7 @@ export default class ReviewsScreen extends React.Component {
             return response.json();
         }).then( (json) => {
             console.log(json.Comment);
-            this.setState({reviews_text: json.Comment[0].body});
+            this.setState({reviews: json.Comment});
         });
     }
 
@@ -60,14 +61,34 @@ export default class ReviewsScreen extends React.Component {
             style={styles.banner}/>
           </Row>
           <Row size={70}>
-            <ScrollView>
-              <Text>{this.state.reviews_text}</Text>
-            </ScrollView>
+          <ScrollView>          
+            {
+                this.state.reviews.map((rev, i) => {
+                    return (
+                        <Review author={rev.username} review={rev.body} key={i} />
+                        )
+                    }
+                )
+            }
+            </ScrollView>            
           </Row>
         </Grid>
       ); 
     }
   }
+
+class Review extends React.Component {
+    render(){
+        return (
+            <Card>
+            <View>
+              <Text style={styles.author}>{this.props.author}</Text>
+              <Text style={styles.review}>{this.props.review}</Text>
+            </View>
+            </Card> 
+        )
+    }
+}
 
 const styles = StyleSheet.create({
   banner: {
@@ -77,6 +98,15 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     padding: 5,
     // fontFamily: 'encode-sans'
+  },
+  author: {
+      fontSize: 11,
+      color: 'blue',
+      alignSelf: 'flex-end',
+      marginRight: 10   
+  },
+  review: {
+
   }
 });
 
