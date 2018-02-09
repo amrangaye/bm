@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { Font } from 'expo';
-import { Card, ListItem, Button, Icon } from 'react-native-elements'
+import { Card, ListItem, Button, Icon, Overlay } from 'react-native-elements'
 
 export default class ReviewsScreen extends React.Component {
     static navigationOptions = {
@@ -62,6 +62,10 @@ export default class ReviewsScreen extends React.Component {
         });
     }
 
+    add_rating(){
+        this.props.navigation.navigate("AddRating");
+    }
+
     render () {
       return (
         <Grid>
@@ -77,7 +81,24 @@ export default class ReviewsScreen extends React.Component {
                 })
             }
           </Row>
-          <Row size={80}>
+          <Row size={10}  style={styles.overall_rating}>
+          <View>
+          <Button
+          title='Add Review'
+          textStyle={{ fontWeight: "700"}}
+          buttonStyle={{
+            backgroundColor: "blue",
+            width: 300,
+            height: 45,
+            borderColor: "transparent",
+            borderWidth: 0,
+            borderRadius: 5,
+          }}
+          onPress = {() => this.add_rating()}
+        />
+        </View>
+          </Row>
+          <Row size={70}>
           <ScrollView>          
             {
                 this.state.reviews.map((rev, i) => {

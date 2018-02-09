@@ -9,6 +9,7 @@ import AboutUsScreen from './screens/AboutUsScreen';
 import HomeScreen from './screens/HomeScreen'; 
 import SocialMediaScreen from './screens/SocialMediaScreen'; 
 import ReviewsScreen from './screens/ReviewsScreen'; 
+import AddRatingScreen from './screens/AddRatingScreen'; 
 
 class App extends React.Component {
   componentDidMount() {
@@ -34,12 +35,15 @@ export default StackNavigator({
   },
   Reviews: {
     screen: ReviewsScreen
+  },
+  AddRating: {
+    screen: AddRatingScreen
   }
 },
 {
   // temp to test out routes - change back to Home
   // initialRouteName: 'Home', 
-  initialRouteName: 'Reviews', 
+  initialRouteName: 'AddRating', 
 }
 );
 
