@@ -3,7 +3,25 @@ import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'rea
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { Font } from 'expo';
 import { FormLabel, FormInput } from 'react-native-elements'
+var t = require('tcomb-form-native');
+var Form = t.form.Form;
 
+// here we are: define your domain model
+var Rating = t.enums({
+    '1': '1 Star',
+    '2': '2 Stars',
+    '3': '3 Stars',
+    '4': '4 Stars',
+    '5': '5 Stars',
+  });
+
+var Review = t.struct({
+    name: t.String,              // a required string
+    body: t.String,  // an optional string
+    rating: Rating,               // a required number
+  });
+
+  
 export default class AddRatingScreen extends React.Component {
     static navigationOptions = {
       title: 'Add Rating',
@@ -22,10 +40,10 @@ export default class AddRatingScreen extends React.Component {
           </Row>
           <Row size={70}>
             <ScrollView>
-                <FormLabel>Name</FormLabel>
-                <FormInput onChangeText={() => {}}/>
-                <FormLabel>Comment</FormLabel>
-                <FormInput onChangeText={() => {}}/>
+            <Form
+            ref="form"
+            type={Review}
+          />
             </ScrollView>
           </Row>
         </Grid>
