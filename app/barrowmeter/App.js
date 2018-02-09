@@ -8,6 +8,7 @@ import { StackNavigator } from 'react-navigation';
 import AboutUsScreen from './screens/AboutUsScreen'; 
 import HomeScreen from './screens/HomeScreen'; 
 import SocialMediaScreen from './screens/SocialMediaScreen'; 
+import ReviewsScreen from './screens/ReviewsScreen'; 
 
 class App extends React.Component {
   componentDidMount() {
@@ -30,12 +31,15 @@ export default StackNavigator({
   },
   Social: {
     screen: SocialMediaScreen,
+  },
+  Reviews: {
+    screen: ReviewsScreen
   }
 },
 {
   // temp to test out routes - change back to Home
   // initialRouteName: 'Home', 
-  initialRouteName: 'Home', 
+  initialRouteName: 'Reviews', 
 }
 );
 
