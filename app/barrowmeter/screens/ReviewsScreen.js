@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { Font } from 'expo';
-import { Card, ListItem, Button } from 'react-native-elements'
+import { Card, ListItem, Button, Icon } from 'react-native-elements'
 
 export default class ReviewsScreen extends React.Component {
     static navigationOptions = {
@@ -65,7 +65,7 @@ export default class ReviewsScreen extends React.Component {
             {
                 this.state.reviews.map((rev, i) => {
                     return (
-                        <Review author={rev.username} review={rev.body} key={i} />
+                        <Review author={rev.username} review={rev.body} rating={rev.rating} key={i} />
                         )
                     }
                 )
@@ -84,6 +84,15 @@ class Review extends React.Component {
             <View>
               <Text style={styles.author}>{this.props.author}</Text>
               <Text style={styles.review}>{this.props.review}</Text>
+              <Row style={styles.stars}>
+                {
+                    Array(this.props.rating).fill().map((i,idx) => {
+                        return (
+                            <Icon name='star' color='lightgreen' key={idx} />
+                        )
+                    })
+                }
+              </Row>
             </View>
             </Card> 
         )
@@ -100,10 +109,13 @@ const styles = StyleSheet.create({
     // fontFamily: 'encode-sans'
   },
   author: {
-      fontSize: 11,
+      fontSize: 12,
       color: 'blue',
       alignSelf: 'flex-end',
       marginRight: 10   
+  },
+  stars: {
+    alignSelf: 'flex-end',
   },
   review: {
 

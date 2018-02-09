@@ -11,7 +11,7 @@ exports.list = function(req, res) {
     if (err) return res.json({ err: err });
 
     res.json({
-      Comment: items
+      Comment: items.reverse()
     });
 
   });
