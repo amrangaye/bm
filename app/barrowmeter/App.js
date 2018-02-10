@@ -43,7 +43,7 @@ export default StackNavigator({
 {
   // temp to test out routes - change back to Home
   // initialRouteName: 'Home', 
-  initialRouteName: 'AddRating', 
+  initialRouteName: 'Home', 
 }
 );
 

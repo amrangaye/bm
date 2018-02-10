@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { Font } from 'expo';
-import { FormLabel, FormInput } from 'react-native-elements'
+import { FormLabel, FormInput, Button } from 'react-native-elements'
 var t = require('tcomb-form-native');
 var Form = t.form.Form;
 
@@ -16,7 +16,7 @@ var Rating = t.enums({
   });
 
 var Review = t.struct({
-    name: t.String,              // a required string
+    username: t.String,              // a required string
     body: t.String,  // an optional string
     rating: Rating,               // a required number
   });
@@ -29,6 +29,32 @@ export default class AddRatingScreen extends React.Component {
         backgroundColor: 'lightblue',
       },
     };
+
+    submit_rating(){
+      var data = this.refs.form.getValue();
+
+      if (data) {
+        console.log(data);
+        var ratingsUrl = 'http://192.168.1.105:3000/api/comments/'
+        
+        var myInit = {
+					method: 'POST',
+					body: JSON.stringify(data),
+					mode: 'cors',
+					cache: 'default',
+					headers: new Headers({
+						'Content-Type': 'application/json'
+					})
+        };
+        
+        fetch(ratingsUrl, myInit).then(function (response) {
+          return response.json();
+        }).then(function (json) {
+          console.log(json); 
+        });
+
+      }    
+    }
 
     render () {
       return (
@@ -44,6 +70,20 @@ export default class AddRatingScreen extends React.Component {
             ref="form"
             type={Review}
           />
+          <Button
+          title='Add Review'
+          textStyle={{ fontWeight: "700"}}
+          buttonStyle={{
+            backgroundColor: "blue",
+            width: 300,
+            height: 45,
+            borderColor: "transparent",
+            borderWidth: 0,
+            borderRadius: 5,
+            alignSelf: 'center'
+          }}
+          onPress = {() => this.submit_rating()}
+        />
             </ScrollView>
           </Row>
         </Grid>
