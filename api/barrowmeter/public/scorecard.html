@@ -61,6 +61,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				return rating_tmpl; 
 			});
 
+			Handlebars.registerHelper('getDate', function(date_str, options) {
+				return (new Date(date_str)).toDateString();
+			});
+
 			var source = `
 			<!-- each of these is a single rating -->
 			{{#each comments}}
@@ -68,7 +72,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <div class="panel-heading">
                             <h3 class="panel-title" style="text-transform: lowercase; margin-left: 1em">
                                     <span class="glyphicon glyphicon-user" aria-hidden="true"></span>  
-                                {{this.username}} (11/10/2017)</h3>
+                                {{this.username}} 
+								
+									<span style='color:#e00000'>
+									({{getDate this.createdAt}})
+									</span>
+								</h3>
                                 
                         </div>
                         <div class="panel-body">
