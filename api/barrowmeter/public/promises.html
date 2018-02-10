@@ -28,7 +28,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		}
 
 		function showPromises(categoryId) {
-			var promisesUrl = 'http://198.211.107.40/api/categories/' + categoryId
+			var promisesUrl = 'http://barrow-meter.org/api/categories/' + categoryId
 			Handlebars.registerHelper('isFulfilled', function(state, options) {
 				if(state === "fulfilled") {
 					return options.fn(this);
@@ -116,7 +116,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		}
 
 		function getCategories() {
-			var categoriesUrl = 'http://198.211.107.40/api/categories/'
+			var categoriesUrl = 'http://barrow-meter.org/api/categories/'
 			var myHeaders = new Headers();
 
 			var myInit = {
