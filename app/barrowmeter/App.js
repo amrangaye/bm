@@ -10,6 +10,7 @@ import HomeScreen from './screens/HomeScreen';
 import SocialMediaScreen from './screens/SocialMediaScreen'; 
 import ReviewsScreen from './screens/ReviewsScreen'; 
 import AddRatingScreen from './screens/AddRatingScreen'; 
+import EventsScreen from './screens/EventsScreen'; 
 
 class App extends React.Component {
   componentDidMount() {
@@ -38,12 +39,15 @@ export default StackNavigator({
   },
   AddRating: {
     screen: AddRatingScreen
+  },
+  Events: {
+    screen: EventsScreen
   }
 },
 {
   // temp to test out routes - change back to Home
   // initialRouteName: 'Home', 
-  initialRouteName: 'Home', 
+  initialRouteName: 'Events', 
 }
 );
 

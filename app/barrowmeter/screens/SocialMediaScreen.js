@@ -26,14 +26,14 @@ export default class SocialMediaScreen extends React.Component {
             type='facebook'
             title='Barrow-Meter on Facebook'
             style={{padding: 15}}
-            onPress={() => Linking.openURL('https://facebook.com')}
+            onPress={() => Linking.openURL('https://www.facebook.com/BarrowMeter/')}
             />
           <SocialIcon
             button
             type='twitter'
             title='Barrow-Meter on Twitter'
             style={{padding: 15}}
-            onPress={() => Linking.openURL('https://twitter.com')}
+            onPress={() => Linking.openURL('https://twitter.com/BarrowMeter1')}
             />
           <SocialIcon
             button

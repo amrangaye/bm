@@ -32,7 +32,7 @@ export default class HomeScreen extends React.Component {
         <Row style={styles.tab_row}>
           <Col><MenuButton title='About Us' icon='info' navigation={this.props.navigation} menu_page='About' /></Col>
           <Col><MenuButton title='Location' icon='location-on' navigation={this.props.navigation} /></Col>
-          <Col><MenuButton title='Events' icon='event-note' navigation={this.props.navigation} /></Col>
+          <Col><MenuButton title='Events' icon='event-note' navigation={this.props.navigation} menu_page='Events' /></Col>
         </Row>
         <Row>
           <Col><MenuButton title='Reviews' icon='rate-review' navigation={this.props.navigation} menu_page='Reviews' /></Col>
