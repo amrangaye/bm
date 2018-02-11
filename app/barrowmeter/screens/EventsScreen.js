@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'rea
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { Font } from 'expo';
 import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
-
+import { List, ListItem } from 'react-native-elements';
 
 export default class EventsScreen extends React.Component {
     static navigationOptions = {
@@ -12,34 +12,52 @@ export default class EventsScreen extends React.Component {
         backgroundColor: 'lightblue',
       },
     };
-
+    
     render () {
+        const list = [
+            {
+              event: 'Launching of Barrow-Meter App and Website',
+              date: '13th February 2018',
+            },
+            {
+              event: 'Community Outreach in North Bank Region',
+              date: '13th - 15th April 2018',
+            },
+            {
+              event: 'Community Outreach in Lower River Region',
+              date: '15th - 17th June 2018',
+            },
+            {
+              event: 'Community Outreach in Central River Region',
+              date: '17th - 19th August 2018',
+            },
+            {
+              event: 'Community Outreach in West Coast Region',
+              date: '19th - 20th October 2018',
+            },
+            {
+              event: 'Community Outreach in Upper River Region',
+              date: '14th - 16th December 2018',
+            },
+          ]; 
       return (
         <Grid>
           <Row>
-            <ScrollView>
-            <Agenda
-            // the list of items that have to be displayed in agenda. If you want to render item as empty date
-            // the value of date key kas to be an empty array []. If there exists no value for date key it is
-            // considered that the date in question is not yet loaded
-            items={
-              {'2018-02-11': [{text: 'item 1 - any js object'}],
-               '2018-02-23': [{text: 'item 2 - any js object'}],
-               '2018-02-24': [],
-               '2018-02-25': [{text: 'item 3 - any js object'},{text: 'any js object'}],
-              }} 
-                            // agenda theme
-            theme={{
-                agendaDayTextColor: 'blue',
-                agendaDayNumColor: 'green',
-                agendaTodayColor: 'red',
-                agendaKnobColor: 'blue'
-            }}
-            renderItem={this.renderItem.bind(this)}
-            renderEmptyDate={this.renderEmptyDate.bind(this)}
-            rowHasChanged={this.rowHasChanged.bind(this)}
-            />
-            </ScrollView>
+          <List containerStyle={{marginBottom: 20, flex: 1}}>
+          {
+            list.map((l, i) => (
+              <ListItem
+                roundAvatar
+                key={i}
+                title={l.event}
+                subtitle={l.date}
+                titleNumberOfLines={2}
+                subtitleStyle={{color:'blue'}}
+                hideChevron
+              />
+            ))
+          }
+        </List>
           </Row>
         </Grid>
       ); 
@@ -51,7 +69,7 @@ export default class EventsScreen extends React.Component {
 
     renderEmptyDate() {
         return (
-          <View style={styles.emptyDate}><Text></Text></View>
+          <View style={styles.emptyDate}><Text>Empty</Text></View>
         );
       }
 
