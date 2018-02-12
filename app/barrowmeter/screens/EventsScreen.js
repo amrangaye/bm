@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from 'react-native';
 import { Col, Row, Grid } from "react-native-easy-grid";
 import { Font } from 'expo';
-import { Calendar, CalendarList, Agenda } from 'react-native-calendars';
 import { List, ListItem } from 'react-native-elements';
 
 export default class EventsScreen extends React.Component {

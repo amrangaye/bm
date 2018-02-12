@@ -38,7 +38,7 @@ export default class HomeScreen extends React.Component {
           <Col><MenuButton title='Reviews' icon='rate-review' navigation={this.props.navigation} menu_page='Reviews' /></Col>
           <Col><MenuButton title='Social Media' icon='chat-bubble' navigation={this.props.navigation} menu_page='Social' /></Col>
          
-          <TouchableOpacity style={styles.menu_button_container} onPress={() => Communications.email(['info@barrowmeter.gm'],null,null,'Subject:','')}>
+          <TouchableOpacity style={styles.menu_button_container} onPress={() => Communications.email(['info@barrow-meter.org'],null,null,'Subject:','')}>
                 <Icon
                 name='email'
                 color='#00aced' />
