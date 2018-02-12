@@ -41,7 +41,7 @@ export default class AddRatingScreen extends React.Component {
 
       if (data) {
         console.log(data);
-        var ratingsUrl = 'http://192.168.1.105:3000/api/comments/'
+        var ratingsUrl = 'http://barrow-meter.org/api/comments/'
         
         var myInit = {
 					method: 'POST',

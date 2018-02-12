@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView, Linking } from 'react-native';
 import { Col, Row, Grid } from 'react-native-easy-grid';
-import { SocialIcon } from 'react-native-elements';
+import { SocialIcon, Icon } from 'react-native-elements';
+import Communications from 'react-native-communications';
 
 export default class SocialMediaScreen extends React.Component {
     static navigationOptions = {
@@ -48,6 +49,13 @@ export default class SocialMediaScreen extends React.Component {
             title='Barrow-Meter Blog'
             style={{padding: 15}}
             onPress={() => Linking.openURL('https://barrowmeterblog.wordpress.com')}
+            />
+          <SocialIcon
+            button
+            type='envelope'
+            title='Email Us'
+            style={{padding: 15}}
+            onPress={() => Communications.email(['info@barrow-meter.org'],null,null,'Subject:','')}
             />
             </View>
           </Row>
