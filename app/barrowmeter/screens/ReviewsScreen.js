@@ -15,7 +15,7 @@ export default class ReviewsScreen extends React.Component {
     state = {reviews: [], avg_rating: 0}    
 
     getRatings(){
-        var ratingsUrl = 'http://192.168.1.105:3000/api/comments/';
+        var ratingsUrl = 'http://barrow-meter.org/api/comments/';
 
         var myHeaders = new Headers();
         var myInit = {
@@ -34,7 +34,7 @@ export default class ReviewsScreen extends React.Component {
     }
  
     componentDidMount(){
-        var ratingsUrl = 'http://192.168.1.105:3000/api/comments/';
+        var ratingsUrl = 'http://barrow-meter.org/api/comments/';
 
         var myHeaders = new Headers();
         var myInit = {

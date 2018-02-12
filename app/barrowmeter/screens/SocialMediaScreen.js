@@ -40,14 +40,14 @@ export default class SocialMediaScreen extends React.Component {
             type='youtube'
             title='Barrow-Meter on YouTube'
             style={{padding: 15}}
-            onPress={() => Linking.openURL('https://youtube.com')}
+            onPress={() => Linking.openURL('https://www.youtube.com/channel/UCuk7fA3fvea2QVu0IE8rdJg')}
             />
           <SocialIcon
             button
             type='wordpress'
             title='Barrow-Meter Blog'
             style={{padding: 15}}
-            onPress={() => Linking.openURL('https://wordpress.com')}
+            onPress={() => Linking.openURL('https://barrowmeterblog.wordpress.com')}
             />
             </View>
           </Row>
