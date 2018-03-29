@@ -32,7 +32,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 			<!---start-header-->
 			<div class="header">
 				<div class="logo">
-										<a href="index.html"><img src="images/BarrowMeter-logo2.png" alt="Mba I Jubee Kaŋ Ne" /></a>
+										<a href="index.html"><img src="images/logo1.png" alt="Mba I Jubee Kaŋ Ne" /></a>
 
 					
 				</div>
@@ -70,7 +70,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 							<li><a href="news.html">Articles</a></li>
 							<li><a href="manifesto.html">Manifesto</a></li>
 							<li><a href="gallery.html">Media</a></li>
-							<li><a href="contact.html">Contact Us</a></li>
+							<li><a href="mailto:info@ymca.gm">Contact Us</a></li>
 						</ul>
 					</div><!-- /.navbar-collapse -->	
 					
@@ -82,7 +82,46 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 	</div>
 <!-- //end-header -->
 <!-- banner -->
-
+<div class="banner">
+	<div class="container">
+			<section class="slider">
+				<div class="flexslider">
+					<ul class="slides">
+						<li>
+							<div class="banner-info">
+								
+							</div>
+						</li>
+						<li>
+							<div class="banner-info">
+								
+								
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="banner-info">
+							
+							</div>
+						</li>
+					</ul>
+				</div>
+			</section>
+		</div>
+		<!-- FlexSlider -->
+			<script defer src="js/jquery.flexslider.js"></script>
+			<script type="text/javascript">
+									$(window).load(function(){
+										$('.flexslider').flexslider({
+										animation: "slide",
+										start: function(slider){
+											$('body').removeClass('loading');
+										}
+										});
+									});
+									</script>
+		<!-- //FlexSlider -->
+</div>
 <!-- //banner -->
 <!-- banner-bottom1 -->
 	<div class="banner-bottom1">
@@ -418,20 +457,10 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- footer -->
 	<div class="footer">
 		<div class="container">
-			<h3>Sign up for our newsletter</h3>
-			<p class="para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus 
-				tristique bibendum. Donec rutrum sed sem quis venenatis.</p>
-			<div class="footer-contact">
-				<form>
-					<input type="text" placeholder="Enter your email to update" required=" ">
-					<input type="submit" value="">
-				</form>
-			</div>
-		
 				<div class="col-md-2 footer-grid">
 					<ul>
-						<li><a href="#">Contact</a></li>
-						<li><a href="#">About</a></li>
+						<li><a href="mailto:info@ymca.gm">Contact</a></li>
+						<li><a href="manifesto.html">About</a></li>
 						<li><a href="#">Privacy</a></li>
 						<li><a href="#">Terms</a></li>
 					</ul>
@@ -440,8 +469,6 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 				<div class="col-md-2 footer-grid">
 					<ul>
 			
-						<li><a href="#">Extras</a></li>
-						<li><a href="#">Forums</a></li>
 					</ul>
 				</div>
 				
