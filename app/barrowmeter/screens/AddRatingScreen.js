@@ -65,7 +65,7 @@ export default class AddRatingScreen extends React.Component {
 
     back_to_reviews(){
       this.setState({ isModalVisible: false });
-      this.props.navigation.navigate("Reviews");   
+      // this.props.navigation.navigate("Reviews");   
     }
 
     render () {

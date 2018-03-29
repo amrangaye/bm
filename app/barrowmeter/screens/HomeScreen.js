@@ -37,7 +37,7 @@ export default class HomeScreen extends React.Component {
     index: 0,
     routes: [
       { key: 'home', title: 'Home' },
-      { key: 'reviews', title: 'Reviews' },
+      { key: 'add_review', title: 'Rate' },
       { key: 'about', title: 'About' },
       { key: 'social', title: 'Social Media' },
     ],
@@ -53,7 +53,7 @@ export default class HomeScreen extends React.Component {
 
   _renderScene = SceneMap({
     home: WelcomeScreen,
-    reviews: ReviewsScreen,
+    add_review: AddRatingScreen,
     about: AboutUsScreen,
     social: SocialMediaScreen,
   });

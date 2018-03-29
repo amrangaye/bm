@@ -66,9 +66,9 @@ export default class WelcomeScreen extends React.Component {
        </View> 
        <Grid>
        <Row size={10}  style={styles.overall_rating}>
-          <Text  style={styles.overall_rating_title}>Average Satisfaction Level</Text> 
+          <Text  style={styles.overall_rating_title}>Average Citizen Satisfaction Level</Text> 
        </Row>
-         <Row size={20} style={styles.overall_rating}>
+         <Row size={10} style={styles.overall_rating}>
            {
                Array(this.state.avg_rating).fill().map((i,idx) => {
                    return (
@@ -77,7 +77,7 @@ export default class WelcomeScreen extends React.Component {
                })
            }
          </Row>
-         <Row size={70}>
+         <Row size={80}>
          <ScrollView>          
            {
                this.state.reviews.map((rev, i) => {
