@@ -1,0 +1,12 @@
+<div class="upcoming">
+						<h4>Latest News</h4>
+						<ul>
+						    <li><a href="news.html" target="blank"> APRC and UDP clash in Busumbala <span>January 12, 2018</span></li>
+							<li><a href="news.html" target="blank">Barrow-Meter to launch soon .</a><span>January 2, 2018</span></li>
+						    <li><a href="news.html" target="blank">Barrow wishes Gambians a prosperous new year ahead of celebrations.</a><span>December 31, 2017</span></li>
+						    <li><a href="news.html" target="blank">NAWEC Boss: "We're trying our best"</a><span>December 15, 2017</span></li>
+							<li><a href="news.html" target="blank">Works Minister Speaks Out</a><span>October 15, 2017</span></li>
+							<li><a href="news.html" target="blank">YEP, Empretec Gambia set to train youths on entrepreneurship.</a><span>October 14 2017</span></li>
+					
+						</ul>
+					</div>
