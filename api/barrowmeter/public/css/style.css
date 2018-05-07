@@ -34,7 +34,7 @@ body a:hover{
 }
 
 .headlines{
-	display: grid;
+	display: inline-block;
 	padding: 5%;
 	border: 5;
 }
@@ -105,7 +105,7 @@ li.act a{
 }
 .navbar-default .navbar-nav > li > a {
     color: #fff;
-    font-size:2.0em;
+    font-size:1.0em;
     padding:30px 10px 10px;
 }
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
