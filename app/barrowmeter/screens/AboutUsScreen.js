@@ -14,12 +14,12 @@ export default class AboutUsScreen extends React.Component {
     render () {
       return (
         <Grid>
-          <Row size={30}>
+          <Row size={40}>
           <Image
           source={require('../assets/banner.jpg')}
             style={styles.banner}/>
           </Row>
-          <Row size={70}>
+          <Row size={60}>
             <ScrollView>
               <Text style={styles.paragraph}>The Barrow-meter is an online platform that allows citizens to be informed on yearly budget allocation, and how the allocated budget is spent and what is done with the remainder. 
               </Text>
