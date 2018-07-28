@@ -71,12 +71,12 @@ export default class AddRatingScreen extends React.Component {
     render () {
       return (
         <Grid>
-          <Row size={30}>
+          <Row size={40}>
           <Image
           source={require('../assets/banner.jpg')}
             style={styles.banner}/>
           </Row>
-          <Row size={70}>
+          <Row size={60}>
             <ScrollView>
             <Form
             ref="form"
